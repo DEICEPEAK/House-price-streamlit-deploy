@@ -3,6 +3,31 @@ import time
 import numpy as np
 import pandas as pd
 import joblib
+from PIL import Image
+import base64
+
+
+@st.cache_data
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_background(png_file):
+    bin_str = get_base64_of_bin_file(png_file)
+    page_bg_img = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/png;base64,{bin_str}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
 
 
 @st.cache_resource(show_spinner = "Loading model")
@@ -39,13 +64,15 @@ def make_prediction(_model, _col_name, house_type, location, bedroom, bathroom, 
 
 
 if __name__ == '__main__':
+
+	set_background('lekki bkg.png')
 	st.title('CHECK HOUSE RENT PRICE')
 
 	st.divider()
 	col1, col2 = st.columns(2)
 
 	with col1:
-		bedroom = st.number_input('How Many Bedroom?', min_value = 0, max_value = 100, value = 1, step = 1)
+		bedroom = st.number_input('**How Many Bedroom?**', min_value = 0, max_value = 100, value = 1, step = 1)
 		bathroom = st.slider('How Many Bathroom?', min_value = 0, max_value = 100, value = 1, step = 1)
 		house_type = st.selectbox('Houste Type', ("DD - Detached Duplex", 'TD - Terraced Duplex', "SDD - Semi Detached Duplex", 'H - House'))
 		
@@ -55,7 +82,7 @@ if __name__ == '__main__':
 		toilet = st.slider('How Many Toilets ?', min_value = 0, max_value = 100, value = 1, step = 1)
 		location = st.selectbox('Where in Lekki Area ?', ('Chevron', 'Ikate', 'Ikota', 'Orchid', 'Osapa', 'Lekki'))
 
-
+	st.divider()
 
 
 
