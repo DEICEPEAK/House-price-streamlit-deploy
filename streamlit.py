@@ -66,7 +66,7 @@ def make_prediction(_model, _col_name, house_type, location, bedroom, bathroom, 
 if __name__ == '__main__':
 
 	set_background('lekki bkg.png')
-	st.title('CHECK HOUSE RENT PRICE')
+	#st.title('CHECK HOUSE RENT PRICE')
 
 	st.divider()
 	col1, col2 = st.columns(2)
