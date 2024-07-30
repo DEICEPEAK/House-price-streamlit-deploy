@@ -32,13 +32,13 @@ def set_background(png_file):
 
 @st.cache_resource(show_spinner = "Loading model")
 def load_model():
-	model = joblib.load(r"C:\Users\HP\Desktop\streanlit\house_model.pkl")
+	model = joblib.load("house_model.pkl")
 	return model
 
 
 @st.cache_resource(show_spinner = "Loading col")
 def load_col():
-	col_name  = joblib.load(r"C:\Users\HP\Desktop\streanlit\house_col_name.pkl")
+	col_name  = joblib.load("house_col_name.pkl")
 	return col_name
 
 	
