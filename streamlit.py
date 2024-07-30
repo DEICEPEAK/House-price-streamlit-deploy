@@ -72,7 +72,7 @@ if __name__ == '__main__':
 	col1, col2 = st.columns(2)
 
 	with col1:
-		bedroom = st.number_input('**How Many Bedroom?**', min_value = 0, max_value = 100, value = 1, step = 1)
+		bedroom = st.number_input('How Many Bedroom?', min_value = 0, max_value = 100, value = 1, step = 1)
 		bathroom = st.slider('How Many Bathroom?', min_value = 0, max_value = 100, value = 1, step = 1)
 		house_type = st.selectbox('Houste Type', ("DD - Detached Duplex", 'TD - Terraced Duplex', "SDD - Semi Detached Duplex", 'H - House'))
 		
