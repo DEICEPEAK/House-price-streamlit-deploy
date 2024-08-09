@@ -80,13 +80,14 @@ if __name__ == '__main__':
 	with col2:
 		parking_space = st.number_input('How Many Parking Space ?', min_value = 0.0, max_value = 100.0, value = 1.0, step = 1.0)
 		toilet = st.slider('How Many Toilets ?', min_value = 0, max_value = 100, value = 1, step = 1)
-		location = st.selectbox('Where in Lekki Area ?', ('Chevron', 'Ikate', 'Ikota', 'Orchid', 'Osapa', 'Lekki'))
+		location = st.selectbox('Where in Lekki Area ?', ('Chevron', 'Ikate', 'Ikota', 'Orchid', 'Osapa', 'Ibeju-Lekki'))
 
 	st.divider()
 
 
 
 	pred_btn = st.button('APPLY', type = 'primary')
+
 	if pred_btn:
 		model = load_model()
 		col_name = load_col()
